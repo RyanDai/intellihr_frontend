@@ -7,6 +7,7 @@ import {
   InputGroup,
   Row,
 } from "react-bootstrap";
+import NavigationBar from "./NavigationBar";
 import { getUsers } from "../api/api";
 import { setInitUsers } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,10 +21,11 @@ function Users() {
         dispatch(setInitUsers(res.data));
       }
     });
-  });
+  }, []);
 
   return (
     <div className="testCard">
+      <NavigationBar />
       <Container>
         <Row>
           <Col></Col>

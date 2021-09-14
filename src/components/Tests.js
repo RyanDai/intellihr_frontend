@@ -7,6 +7,7 @@ import {
   InputGroup,
   Row,
 } from "react-bootstrap";
+import NavigationBar from "./NavigationBar";
 import { getTests } from "../api/api";
 import { setInitTests } from "../actions/testActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,16 +28,21 @@ function Tests() {
 
   return (
     <div className="testCard">
-      {tests.map((test) => (
-        <Container>
-          <Row>
-            <Col>{test.Label}</Col>
-          </Row>
-          <Row>
-            <Col>{test.Label}</Col>
-          </Row>
-        </Container>
-      ))}
+      <NavigationBar />
+      {tests ? (
+        tests.map((test) => (
+          <Container>
+            <Row>
+              <Col>{test.Label}</Col>
+            </Row>
+            <Row>
+              <Col>{test.Required}</Col>
+            </Row>
+          </Container>
+        ))
+      ) : (
+        <p>Loading data...</p>
+      )}
     </div>
   );
 }

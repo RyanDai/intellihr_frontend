@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-function userCard() {
+function UserCard() {
   const dispatch = useDispatch();
 
   return (
@@ -23,4 +23,4 @@ function userCard() {
   );
 }
 
-export default userCard;
+export default UserCard;

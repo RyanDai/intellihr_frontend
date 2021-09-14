@@ -1,4 +1,5 @@
 import axios from "axios";
+import Decoder from "jwt-decode";
 
 export async function getUsers() {
   return axios
@@ -23,5 +24,17 @@ export async function getTests() {
     .catch((error) => {
       console.log(error);
       alert("Cannot find questions");
+    });
+}
+
+export async function login(value) {
+  return axios
+    .post("/login", value)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Username/Passord incorrect!");
     });
 }

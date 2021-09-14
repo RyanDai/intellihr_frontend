@@ -2,14 +2,13 @@ const initialState = { isLoggedIn: false };
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_INIT_TESTS":
-      //console.log("payload", action.payload);
-      return { ...state, testQuestions: action.payload };
-    case "EDIT_TEST":
-      return state;
+    case "LOGIN":
+      return { ...state, isLoggedIn: true };
+    case "LOGOUT":
+      return { ...state, isLoggedIn: false };
     default:
       return state;
   }
 };
 
-export default testReducer;
+export default loginReducer;

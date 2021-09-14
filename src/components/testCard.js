@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-function testCard() {
+function TestCard() {
   const dispatch = useDispatch();
   return (
     <div className="testCard">
@@ -22,4 +22,4 @@ function testCard() {
   );
 }
 
-export default testCard;
+export default TestCard;
