@@ -1,5 +1,4 @@
 import axios from "axios";
-import Decoder from "jwt-decode";
 
 export async function getUsers() {
   return axios
@@ -27,6 +26,19 @@ export async function getTests() {
     });
 }
 
+export async function getSubmissions() {
+  return axios
+    .get("/submissions")
+    .then((response) => {
+      console.log("submissions:", response);
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Cannot find questions");
+    });
+}
+
 export async function login(value) {
   return axios
     .post("/login", value)
@@ -36,5 +48,18 @@ export async function login(value) {
     .catch((error) => {
       console.log(error);
       alert("Username/Passord incorrect!");
+    });
+}
+
+export async function postSubmission(value) {
+  console.log(value);
+  return axios
+    .post("/postSubmission", value)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      //alert("Submit failed");
     });
 }

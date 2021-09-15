@@ -1,8 +1,8 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { login } from "../api/api";
-import { log_in, log_out } from "../actions/loginActions";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class Signin extends Component {
   constructor(props) {
@@ -38,11 +38,14 @@ class Signin extends Component {
 
   login = () => {
     login(this.state.account).then((result) => {
-      this.props.log_in();
+      if (result !== undefined) this.props.log_in(result.data);
     });
   };
 
   render() {
+    if (this.props.isLoggedIn) {
+      return <Redirect to="/users" />;
+    }
     return (
       <div>
         <Form>
@@ -77,10 +80,16 @@ class Signin extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    log_in: () => {
-      dispatch({ type: "LOGIN" });
+    log_in: (value) => {
+      dispatch({ type: "LOGIN", payload: value });
     },
   };
 };
 
-export default connect(null, mapDispatchToProps)(Signin);
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.login.isLoggedIn,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
