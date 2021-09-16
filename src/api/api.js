@@ -60,6 +60,5 @@ export async function postSubmission(value) {
     })
     .catch((error) => {
       console.log(error);
-      //alert("Submit failed");
     });
 }

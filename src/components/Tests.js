@@ -44,8 +44,7 @@ class Tests extends Component {
     };
     postSubmission(reqBody)
       .then((result) => {
-        console.log("result", result);
-        //refresh
+        alert("Submit successful");
       })
       .catch((err) => {
         console.log(err);
