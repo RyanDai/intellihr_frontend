@@ -21,7 +21,7 @@ function App() {
             <Users />
           </Route>
           <Route exact path="/tests">
-            <Tests />
+            {isLoggedIn ? <Tests /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/submissions">
             <Submissions />

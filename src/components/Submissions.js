@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Col, Container, Row, Card } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import { getSubmissions } from "../api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -26,8 +26,8 @@ function Submissions() {
   }, []);
 
   const submissions = useSelector((state) => state.submission.submissions);
-  const currentUsername = useSelector(
-    (state) => state.login.currentUser.userName
+  const currentUsername = useSelector((state) =>
+    state.login.currentUser ? state.login.currentUser.userName : null
   );
 
   return (
